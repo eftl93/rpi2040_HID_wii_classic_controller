@@ -95,13 +95,25 @@ while True:
     finally:
         #unlock the i2c bus when finished scanning
         i2c.unlock()
+    #concatenation of shoulder buttons and plus and minus
+    shoulder_plus_minus = 0
+    shoulder_plus_minus = (shoulder_plus_minus << 0) | zl
+    shoulder_plus_minus = (shoulder_plus_minus << 1) | zr
+    shoulder_plus_minus = (shoulder_plus_minus << 1) | lt
+    shoulder_plus_minus = (shoulder_plus_minus << 1) | rt
+    shoulder_plus_minus = (shoulder_plus_minus << 1) | minus
+    shoulder_plus_minus = (shoulder_plus_minus << 1) | plus
+
     #use home button to turn on or off keyboard function. 
     keyboard_on = bool(keyboard_on) ^ bool(not home)
     print("State of keyboard_on flag: ", bool(keyboard_on))
     
     if keyboard_on:
+        keyboard.write('start')
         keyboard.write(str(lx))
-        keyboard.write('\n')
         keyboard.write(str(ly))
-        keyboard.write('\n')16
+        keyboard.write(str(rx))
+        keyboard.write(str(ry))
+        keyboard.write(str(shoulder_plus_minus))
+        keyboard.write('\n')
     
