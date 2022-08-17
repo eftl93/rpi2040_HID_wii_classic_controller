@@ -42,7 +42,10 @@ finally:
 #default value for keyboard_on is 0
 keyboard_on = 0;
 while True:
-    led.value = 0
+    led.value = True
+    time.sleep(.04)
+    led.value = False
+    time.sleep(.05)
     while not i2c.try_lock():
         pass
     try:
@@ -131,22 +134,13 @@ while True:
     #print("shoulder, + and -: ", bin(shoulder_plus_minus))
     
     if keyboard_on:
-        led.value = 1
         keyboard.write('z')
         keyboard.write(chr(lx + 33))
-        time.sleep(.01)
         keyboard.write(chr(ly + 33))
-        time.sleep(.01)
         keyboard.write(chr(rx + 33))
-        time.sleep(.01)
         keyboard.write(chr(ry + 33))
-        time.sleep(.01)
         #keyboard.write(chr(shoulder_plus_minus + 33))
-        #time.sleep(.01)
         keyboard.write(chr(dpad_buttons + 33))
-        time.sleep(.01)
         keyboard.write(chr(daction_buttons + 33))
-        time.sleep(.01)
         keyboard.write('\n')
-        time.sleep(.01)
     
