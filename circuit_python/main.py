@@ -133,6 +133,7 @@ while True:
     if keyboard_on:
         led.value = 1
         keyboard.write('z')
+        time.sleep(.01)
         keyboard.write(chr(lx + 33))
         time.sleep(.01)
         keyboard.write(chr(ly + 33))
@@ -147,6 +148,8 @@ while True:
         time.sleep(.01)
         keyboard.write(chr(daction_buttons + 33))
         time.sleep(.01)
-        keyboard.write('\n')
+        keyboard.write(chr(shoulder_plus_minus +33))
         time.sleep(.01)
+        keyboard.write('y')
+        time.sleep(.05)
     
