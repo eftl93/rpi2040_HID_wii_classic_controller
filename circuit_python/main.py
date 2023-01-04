@@ -23,7 +23,7 @@ i2c=busio.I2C(board.GP7, board.GP6, frequency=400000)
 while not i2c.try_lock():
     pass
 
-#With a try block, it will ensure that i2.unlock is run
+#With a try block, it will ensure that iC.unlock is run
 try:
     #Print the addresses found 
     print("I2C addresses found:",[hex(device_address) for device_address in i2c.scan()])
