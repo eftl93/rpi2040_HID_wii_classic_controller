@@ -15,7 +15,7 @@ led.direction = Direction.OUTPUT
 kbd = Keyboard(usb_hid.devices)
 keyboard = KeyboardLayoutUS(kbd)
 
-#define that i2c will be used and the pins to be used are gp7 and gp6 at a frequency of 400KHz
+#define that i2c will be used and the pins to be used are gp7(SCL) and gp6(SDA) at a frequency of 400KHz
 i2c=busio.I2C(board.GP7, board.GP6, frequency=400000)
 
 
